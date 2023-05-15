@@ -1,0 +1,35 @@
+<div class="header-container">
+    <div class="contact-dialog-title">
+      <div class="text-white"><h1>System Settings</h1></div>
+        <button mat-icon-button (click)="onNoClick()">
+            <mat-icon>close</mat-icon>
+          </button>      
+    </div>
+  </div>
+<form [formGroup]="form" class="example-form" (ngSubmit)="save()">
+    <table class="example-full-width" cellspacing="0">
+        <tr>
+            <td>
+                <mat-form-field class="example-full-width">
+                    <mat-label>Email</mat-label>
+                    <input matInput formControlName="email">
+                </mat-form-field>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <mat-form-field class="example-full-width">
+                    <mat-label>Session:</mat-label>
+                    <mat-select formControlName="sessionId" >
+                        <mat-option *ngFor="let item of sesions" [value]="item.id">
+                        {{item.name}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </td>
+        </tr>        
+    </table>
+    <p>
+        <button type="submit" [disabled]="!form.valid"  >Save</button>
+    </p>
+  </form>

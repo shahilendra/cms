@@ -1,0 +1,70 @@
+<div class="header-container">
+    <div class="contact-dialog-title">
+      <div class="text-white"><h1>Batch</h1></div>
+        <button mat-icon-button (click)="onNoClick()">
+            <mat-icon>close</mat-icon>
+          </button>      
+    </div>
+  </div>
+<form [formGroup]="form" class="example-form" (ngSubmit)="save()">
+    <table class="example-full-width" cellspacing="0">
+        <tr>
+            <td>
+                <mat-form-field class="example-full-width">
+                    <mat-label>Name</mat-label>
+                    <input matInput formControlName="name">
+                </mat-form-field>
+            </td>
+            <td>
+                <mat-form-field class="example-full-width">
+                    <mat-label>Class</mat-label>
+                    <input matInput formControlName="class">
+                </mat-form-field>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <mat-form-field>
+                    <input matInput
+                    [format]="12"
+                    formControlName="startTime"
+                    [ngxMatTimepicker]="startTime"
+                    placeholder="12:00"
+                    readonly />
+                    <mat-icon matSuffix
+                              (click)="startTime.open()">
+                              watch_later
+                    </mat-icon>
+                </mat-form-field>
+                <div class="ngx-mtp-box-bordered">
+                     <ngx-mat-timepicker color="accent"
+                                         appendToInput="true"
+                                         #startTime></ngx-mat-timepicker>
+                </div>
+            </td>
+            <td>
+                <mat-form-field>
+                    <input matInput
+                    [format]="12"
+                    formControlName="endTime"
+                    [ngxMatTimepicker]="endTime"
+                    placeholder="12:00"
+                    readonly />
+                    <mat-icon matSuffix
+                              (click)="endTime.open()">
+                              watch_later
+                    </mat-icon>
+                </mat-form-field>
+                <div class="ngx-mtp-box-bordered">
+                     <ngx-mat-timepicker color="accent"
+                                         appendToInput="true"
+                                         #endTime></ngx-mat-timepicker>
+                </div>
+            </td>
+        </tr>        
+    </table>
+    <p>
+        <button type="submit" [disabled]="!form.valid"  >Save</button>
+        <a (click)="clear()"  >Clear</a>
+    </p>
+  </form>

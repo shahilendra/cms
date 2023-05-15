@@ -1,0 +1,23 @@
+module.exports = {
+  port: 3000,
+  secret: 'supersecret',
+  expiresIn: 86400, // expires in 24 hours,
+  isConsoleLog: true,
+  isTestSetup: true,
+  publicRooTURL: 'http://localhost:4200/',
+  userRoles: ['Director','Instructor', 'Player', 'DBA'],
+  sqlConfig: {
+    database: 'cms',
+    user: 'sa',
+    password: 'sa@123',
+    host: '127.0.0.1',
+    dialect: 'mssql',
+    port: 59298, //1433,
+    encrypt: false,
+    pool: {
+      max: 100,
+      min: 0,
+      idleTimeoutMillis: 30000
+    }
+  }
+};

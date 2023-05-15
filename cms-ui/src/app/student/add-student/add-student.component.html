@@ -1,0 +1,115 @@
+<div class="header-container">
+    <div class="contact-dialog-title">
+      <div class="text-white"><h1>Student Form</h1></div>
+        <button mat-icon-button (click)="onNoClick()">
+            <mat-icon>close</mat-icon>
+          </button>      
+    </div>
+  </div>
+<form [formGroup]="form" class="example-form" (ngSubmit)="save()">
+    <mat-form-field class="example-full-width">
+      <mat-label>Roll Number</mat-label>
+      <input matInput formControlName="rollNumber">
+    </mat-form-field>
+  
+    <table class="example-full-width" cellspacing="0">
+        <tr>
+            <td>
+                <mat-form-field class="example-full-width">
+                    <mat-label>First Name</mat-label>
+                    <input matInput formControlName="firstName" >
+                </mat-form-field>
+            </td>
+            <td>
+                <mat-form-field class="example-full-width">
+                    <mat-label>Middle Name</mat-label>
+                    <input matInput formControlName="middleName" >
+                </mat-form-field>
+            </td>
+            <td>
+                <mat-form-field class="example-full-width">
+                    <mat-label>Last Name</mat-label>
+                    <input matInput formControlName="lastName" >
+                </mat-form-field>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <mat-form-field class="example-full-width">
+                    <mat-label>Phone</mat-label>
+                    <input matInput formControlName="phone" >
+                </mat-form-field>
+            </td>
+            <td>
+                <mat-form-field class="example-full-width">
+                    <mat-label>Father Name</mat-label>
+                    <input matInput formControlName="fatherName" >
+                </mat-form-field>
+            </td>
+            <td>
+                <mat-form-field class="example-full-width">
+                    <mat-label>Mother Name</mat-label>
+                    <input matInput formControlName="motherName" >
+                </mat-form-field>
+            </td>            
+        </tr>
+        <tr>
+            <td>
+                <mat-form-field class="example-full-width">
+                    <mat-label>Address</mat-label>
+                    <input matInput formControlName="address" >
+                </mat-form-field>
+            </td>
+            <td>
+                <mat-form-field class="example-full-width">
+                    <mat-label>City</mat-label>
+                    <input matInput formControlName="city" >
+                </mat-form-field>
+            </td>
+            <td>
+                <mat-form-field class="example-full-width">
+                    <mat-label>Pin Code</mat-label>
+                    <input matInput formControlName="pinCode" >
+                </mat-form-field>
+            </td>            
+        </tr>
+        <tr>
+            <td>
+                <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label>Joining Date</mat-label>
+                    <input matInput formControlName="joiningDate" [matDatepicker]="joiningDate">
+                    <mat-hint>MM/DD/YYYY</mat-hint>
+                    <mat-datepicker-toggle matIconSuffix [for]="joiningDate"></mat-datepicker-toggle>
+                    <mat-datepicker  #joiningDate></mat-datepicker>
+                  </mat-form-field>
+            </td>
+            <td>
+                <mat-form-field class="example-full-width">
+                    <mat-label>Batch:</mat-label>
+                    <mat-select formControlName="batchId" >
+                        <mat-option *ngFor="let item of batchs" [value]="item.id">
+                        {{item.name}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </td>
+            <td>
+                <mat-form-field class="example-full-width">
+                    <mat-label>Parent Phone</mat-label>
+                    <input matInput formControlName="parentPhone" >
+                </mat-form-field>
+            </td>            
+        </tr>
+        <tr>
+            <td>
+                <mat-form-field class="example-full-width">
+                    <mat-label>Board</mat-label>
+                    <input matInput formControlName="board" >
+                </mat-form-field>
+            </td>            
+        </tr>        
+    </table>
+    <p>
+        <button type="submit" [disabled]="!form.valid"  >Save</button>
+    </p>
+  </form>
