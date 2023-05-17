@@ -57,7 +57,7 @@ router.put('/:id', function(req, res, next) {
       }
     })
     .then(systemSetting => helpers.updateSystemSetting(systemSetting, req.body, req.userFullName))
-    .then(systemSetting => models.session.update(systemSetting, { returning: true, where: { id: req.params.id } }))
+    .then(systemSetting => models.systemSetting.update(systemSetting, { returning: true, where: { id: req.params.id } }))
     .then((systemSetting) => {
       return helpers.finalResponse(200 , systemSetting, res);
     })

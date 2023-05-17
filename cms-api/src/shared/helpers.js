@@ -358,6 +358,7 @@ exports.updateBatch = function(data, body, createdBy, systemSetting) {
     }
     dataMap.name = body.name;
     dataMap.class = body.class;
+    dataMap.feeAmount = body.feeAmount;    
     dataMap.startTime = body.startTime;
     dataMap.endTime = body.endTime;
     dataMap.sessionId = systemSetting?.sessionId;
@@ -435,6 +436,7 @@ exports.updateStudent = function(data, body, createdBy, systemSetting) {
     dataMap.city = body.city;
     dataMap.pinCode = body.pinCode;
     dataMap.board = body.board;
+    dataMap.gender = body.gender;
     dataMap.joiningDate = body.joiningDate;
     dataMap.batchId = body.batchId;
     dataMap.sessionId = systemSetting?.sessionId;
@@ -443,5 +445,34 @@ exports.updateStudent = function(data, body, createdBy, systemSetting) {
     return Promise.resolve(dataMap);
   } else {
     return Promise.reject({ message: 'Student rollNumber should not be empty. So please enter valid Student rollNumber!'});
+  }
+}
+
+exports.updateStudentFee = function(data, body, createdBy) {
+  if(data == null) {
+    return Promise.reject({ message: 'Student Fee id is not be empty. So please enter valid Student Fee id!'});
+  } else  if(body.feeAmount) {
+    let dataMap = {};
+    if(data.id) {
+      dataMap.updatedBy = createdBy;
+    } else {
+      dataMap.createdBy = createdBy;
+    }
+    dataMap.feeAmount = body.feeAmount;
+    dataMap.discountAmount = body.discountAmount;
+    dataMap.paymentAmount = body.feeAmount - body.discountAmount;
+    dataMap.paymentDate = body.paymentDate;
+    dataMap.notes = body.notes;
+    dataMap.receiptNo = body.receiptNo;
+    dataMap.paymentMode = body.paymentMode;
+    dataMap.paymentMonth = body.paymentMonth
+    dataMap.sessionId = body.sessionId;
+    dataMap.studentId = body.studentId;
+    dataMap.batchId = body.batchId;
+    dataMap.isActive = body.isActive;
+    dataMap.organisationId = body.organisationId;
+    return Promise.resolve(dataMap);
+  } else {
+    return Promise.reject({ message: 'Student Fee Amount should not be empty. So please enter valid Student Fee Amount!'});
   }
 }

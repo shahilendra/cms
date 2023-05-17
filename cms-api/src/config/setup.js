@@ -62,7 +62,8 @@ const dropTestDbs = () => {
     models.session.sync(),
     models.batch.sync(),
     models.systemSetting.sync(),
-    models.student.sync()
+    models.student.sync(),
+    models.studentFee.sync()
   ]);
 };
 

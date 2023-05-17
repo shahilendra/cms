@@ -106,7 +106,18 @@
                     <mat-label>Board</mat-label>
                     <input matInput formControlName="board" >
                 </mat-form-field>
-            </td>            
+            </td>
+            <td>
+                <mat-label>Gender</mat-label>
+                <mat-radio-group
+                    aria-labelledby="example-radio-group-label"
+                    class="example-radio-group"
+                    formControlName="gender">
+                    <mat-radio-button class="example-radio-button" *ngFor="let season of genders" [value]="season">
+                        {{season}}
+                    </mat-radio-button>
+                </mat-radio-group>
+            </td>      
         </tr>        
     </table>
     <p>

@@ -11,7 +11,7 @@ import { MatDialog } from '@angular/material/dialog';
 })
 export class BatchComponent {
   entitys = [];
-  displayedColumns: string[] = ['name', 'startTime','endTime', 'class'];
+  displayedColumns: string[] = ['name', 'startTime','endTime', 'class', 'feeAmount'];
   selectedRow: any;
   constructor(private toastr: ToastrService, private batchService: BatchService, private dialog: MatDialog,) {}
     ngOnInit() {

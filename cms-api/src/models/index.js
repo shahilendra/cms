@@ -14,3 +14,4 @@ module.exports.session = require('./schemas/session'); // ok
 module.exports.batch = require('./schemas/batch'); // ok
 module.exports.systemSetting = require('./schemas/system-setting'); // ok
 module.exports.student = require('./schemas/student'); // ok
+module.exports.studentFee = require('./schemas/student-fee'); // ok

@@ -15,5 +15,6 @@ router.use('/v1/sessions', auth, require('./session'));  //tested
 router.use('/v1/batchs', auth, require('./batch'));  //tested
 router.use('/v1/system-settings', auth, require('./system-setting'));  //tested
 router.use('/v1/students', auth, require('./student'));  //tested
+router.use('/v1/student-fees', auth, require('./student-fee'));  //tested
 
 module.exports = router;

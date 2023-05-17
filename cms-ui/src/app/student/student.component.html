@@ -1,13 +1,17 @@
+<mat-form-field class="example-full-width">
+    <mat-label>Name</mat-label>
+    <input matInput [(ngModel)]="filter">
+  </mat-form-field>
 <button mat-fab class="contact-add-btn" (click)="add()">
     <mat-icon>person_add</mat-icon>
 </button>
-<button mat-icon-button (click)="update()" *ngIf="selectedRow">
+<!-- <button mat-icon-button (click)="update()" *ngIf="selectedRow">
     <mat-icon>edit</mat-icon>
   </button>
   <button mat-icon-button (click)="update()" *ngIf="selectedRow">
         <mat-icon>delete</mat-icon>
- </button>
-<table mat-table [dataSource]="entitys" class="mat-elevation-z8">            
+ </button> -->
+<table mat-table [dataSource]="entitys| filterSearch: 'name': filter" class="mat-elevation-z8">            
     <ng-container matColumnDef="rollNumber">
         <th mat-header-cell *matHeaderCellDef> Roll Number </th>
         <td mat-cell *matCellDef="let element"> {{element.rollNumber}} </td>
@@ -47,6 +51,17 @@
     <ng-container matColumnDef="board">
         <th mat-header-cell *matHeaderCellDef> Board </th>
         <td mat-cell *matCellDef="let element"> {{element.board}} </td>
+    </ng-container>
+    <ng-container matColumnDef="action">
+        <th mat-header-cell *matHeaderCellDef> Action </th>
+        <td mat-cell *matCellDef="let element">
+            <button mat-icon-button (click)="update(element)">
+                <mat-icon>edit</mat-icon>
+              </button>
+              <button mat-icon-button (click)="update(element)">
+                    <mat-icon>delete</mat-icon>
+             </button>
+        </td>
     </ng-container>
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"

@@ -1,0 +1,64 @@
+<div class="header-container">
+    <div class="contact-dialog-title">
+      <div class="text-white"><h1>Student Monthly Fee</h1></div>
+        <button mat-icon-button (click)="onNoClick()">
+            <mat-icon>close</mat-icon>
+          </button>      
+    </div>
+  </div>
+<form [formGroup]="form" class="example-form" (ngSubmit)="save()">
+    <table class="example-full-width" cellspacing="0">
+        <tr>
+            <td>
+                <mat-form-field class="example-full-width">
+                    <mat-label>Fee Amount</mat-label>
+                    <input matInput formControlName="feeAmount" readonly="true" type="number">
+                </mat-form-field>
+            </td>
+            <td>
+                <mat-form-field class="example-full-width">
+                    <mat-label>Discount Amount</mat-label>
+                    <input matInput formControlName="discountAmount" type="number">
+                </mat-form-field>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label>Payment Date</mat-label>
+                    <input matInput formControlName="paymentDate" [matDatepicker]="paymentDate">
+                    <mat-hint>MM/DD/YYYY</mat-hint>
+                    <mat-datepicker-toggle matIconSuffix [for]="paymentDate"></mat-datepicker-toggle>
+                    <mat-datepicker  #paymentDate></mat-datepicker>
+                  </mat-form-field>
+            </td>
+            <td>
+                <mat-form-field class="example-full-width">
+                    <mat-label>Notes</mat-label>
+                    <input matInput formControlName="notes">
+                </mat-form-field>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <mat-form-field class="example-full-width">
+                    <mat-label>Receipt No</mat-label>
+                    <input matInput formControlName="receiptNo">
+                </mat-form-field>
+            </td>
+            <td>
+                <mat-form-field class="example-full-width">
+                    <mat-label>Payment Mode:</mat-label>
+                    <mat-select formControlName="paymentMode" >
+                        <mat-option *ngFor="let item of paymentModes" [value]="item">
+                        {{item}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </td>
+        </tr>  
+    </table>
+    <p>
+        <button type="submit" [disabled]="!form.valid"  >Save</button>
+    </p>
+  </form>

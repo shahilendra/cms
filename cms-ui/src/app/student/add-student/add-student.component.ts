@@ -14,6 +14,7 @@ export class AddStudentComponent {
   form!: FormGroup;
   batchs: any = [];
   entity: any;
+  genders: any = ['Female', 'Male'];
   constructor(private toastr: ToastrService, private studentService: StudentService,
     private dialogRef: MatDialogRef<AddStudentComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
@@ -66,7 +67,8 @@ export class AddStudentComponent {
       pinCode: [null],
       joiningDate: [new Date(), [Validators.required]],
       batchId: [null, [Validators.required]],
-      board: [null, [Validators.required]]
+      board: [null, [Validators.required]],
+      gender: [null, [Validators.required]],
     });
   }
   setFormData() {
@@ -84,7 +86,8 @@ export class AddStudentComponent {
       pinCode: this.entity.pinCode,
       joiningDate: this.entity.joiningDate,
       batchId: this.entity.batchId,
-      board: this.entity.board
+      board: this.entity.board,
+      gender: this.entity.gender,
     });
   }
   onNoClick() {

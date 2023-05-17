@@ -3,6 +3,8 @@ import { ToastrService } from 'ngx-toastr';
 import { StudentService } from './student.service';
 import { AddStudentComponent } from './add-student/add-student.component';
 import { MatDialog } from '@angular/material/dialog';
+import { StudentFeeComponent } from './student-fee/student-fee.component';
+
 
 @Component({
   selector: 'app-student',
@@ -10,10 +12,13 @@ import { MatDialog } from '@angular/material/dialog';
   styleUrls: ['./student.component.css']
 })
 export class StudentComponent {
+  filter: any;
   entitys = [];
-  displayedColumns: string[] = ['rollNumber', 'name', 'phone', 'joiningDate', 'batch', 'class', 'board','fatherName', 'motherName', 'address'];
+  entitysFilter = [];
+  displayedColumns: string[] = ['rollNumber', 'name', 'phone', 'joiningDate', 'batch', 'class', 'board','fatherName', 'motherName', 'address', 'action'];
   selectedRow: any;
-  constructor(private toastr: ToastrService, private studentService: StudentService, private dialog: MatDialog,) {}
+  constructor(private toastr: ToastrService, private studentService: StudentService, private dialog: MatDialog
+    ) {}
     ngOnInit() {
       this.getData();
     }
@@ -29,9 +34,9 @@ export class StudentComponent {
   highlight(row: any){
     this.selectedRow = row;
   }
-  update() {
+  update(element: any) {
     const dialogRef = this.dialog.open(AddStudentComponent, {
-      data: {selectedRow: this.selectedRow},
+      data: {selectedRow: element},
       width: '800px',
       height: '800px'
     });
@@ -42,6 +47,17 @@ export class StudentComponent {
   add() {
     const dialogRef = this.dialog.open(AddStudentComponent, {
       data: {selectedRow: null},
+      width: '800px',
+      height: '800px'
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      this.getData();
+    });
+  }
+
+  payment(data: any) {
+    const dialogRef = this.dialog.open(StudentFeeComponent, {
+      data: {selectedRow: data},
       width: '800px',
       height: '800px'
     });

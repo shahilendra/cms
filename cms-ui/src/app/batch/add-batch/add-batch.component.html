@@ -61,7 +61,15 @@
                                          #endTime></ngx-mat-timepicker>
                 </div>
             </td>
-        </tr>        
+        </tr> 
+        <tr>
+            <td>
+                <mat-form-field class="example-full-width">
+                    <mat-label>Fee Amount</mat-label>
+                    <input matInput formControlName="feeAmount">
+                </mat-form-field>
+            </td>
+        </tr>       
     </table>
     <p>
         <button type="submit" [disabled]="!form.valid"  >Save</button>

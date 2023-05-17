@@ -43,7 +43,8 @@ export class AddBatchComponent {
       startTime: null,
       entTime: new Date(),
       name: null,
-      class: null
+      class: null,
+      feeAmount: null
     });
   }
   setForm() {
@@ -51,7 +52,8 @@ export class AddBatchComponent {
       startTime: [this.data.selectedRow?.startTime, [Validators.required]],
       endTime: [this.data.selectedRow?.endTime, [Validators.required]],
       name: [this.data.selectedRow?.name, [Validators.required]],
-      class: [this.data.selectedRow?.class, [Validators.required]]
+      class: [this.data.selectedRow?.class, [Validators.required]],
+      feeAmount: [this.data.selectedRow?.feeAmount, [Validators.required]]
     });
   }
   onNoClick() {
