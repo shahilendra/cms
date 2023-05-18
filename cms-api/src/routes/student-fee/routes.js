@@ -93,5 +93,22 @@ router.get('/due/fees', function(req, res, next) {
     return helpers.finalResponse(error.status , error, res);
   });
 });
+router.get('/fee/payments', function(req, res, next) {
+  return sequelize.query(`EXEC GetStudentFeeRanges :orgId, :sessionId, :fromDate, :toDate`,
+    { replacements: 
+      { 
+        orgId: req.organisationId,
+        sessionId: req.systemSetting?.sessionId,
+        fromDate: req.query.fromDate,
+        toDate: req.query.toDate
+      }, type: sequelize.QueryTypes.SELECT }
+  )
+  .then((students) => {
+    return helpers.finalResponse(200 , students, res);
+  })
+  .catch((error) => {
+    return helpers.finalResponse(error.status , error, res);
+  });
+});
 
 module.exports = router;

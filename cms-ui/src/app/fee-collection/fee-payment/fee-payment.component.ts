@@ -5,24 +5,26 @@ import { StudentFeeComponent } from 'src/app/student/student-fee/student-fee.com
 import { StudentFeeService } from 'src/app/student/student-fee/student-fee.service';
 
 @Component({
-  selector: 'app-fee-due',
-  templateUrl: './fee-due.component.html',
-  styleUrls: ['./fee-due.component.css']
+  selector: 'app-fee-payment',
+  templateUrl: './fee-payment.component.html',
+  styleUrls: ['./fee-payment.component.css']
 })
-export class FeeDueComponent {
+export class FeePaymentComponent {
   filter: any;
   entitys = [];
   entitysFilter = [];
-  displayedColumns: string[] = ['name', 'joiningDate', 'paymentExpireDate', 'monthName', 'feeAmount', 'payment'];
+  displayedColumns: string[] = ['name', 'joiningDate', 'batch', 'feeAmount', 'paymentAmount', 'paymentDate', 'action'];
   selectedRow: any;
-  dateToday: Date = new Date();
+  fromUIDate: Date = new Date();
+  toUIDate: Date = new Date();
   constructor(private toastr: ToastrService, private studentFeeService: StudentFeeService, private dialog: MatDialog
     ) {}
     ngOnInit() {
+      this.fromUIDate.setDate(this.fromUIDate.getDate() - 1);
       this.getData();
     }
   getData(){
-    this.studentFeeService.getDueFee(this.dateToday)
+    this.studentFeeService.getPayments(this.fromUIDate, this.toUIDate)
     .subscribe((data)=>{
       this.entitys = data;
     },

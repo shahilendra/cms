@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { FeeCollectionComponent } from './fee-collection.component';
 import { FeeDueComponent } from './fee-due/fee-due.component';
+import { FeePaymentComponent } from './fee-payment/fee-payment.component';
 
 const routes: Routes = [{
   path:'',
@@ -9,6 +10,9 @@ const routes: Routes = [{
 }, {
   path: 'due',
   component: FeeDueComponent
+}, {
+  path: 'payment',
+  component: FeePaymentComponent
 }];
 
 @NgModule({
