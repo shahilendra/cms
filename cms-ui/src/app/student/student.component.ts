@@ -15,7 +15,7 @@ export class StudentComponent {
   filter: any;
   entitys = [];
   entitysFilter = [];
-  displayedColumns: string[] = ['rollNumber', 'name', 'phone', 'joiningDate', 'batch', 'class', 'board','fatherName', 'motherName', 'address', 'action'];
+  displayedColumns: string[] = ['rollNumber', 'name', 'phone', 'joiningDate', 'batch', 'class', 'board', 'address', 'action'];
   selectedRow: any;
   constructor(private toastr: ToastrService, private studentService: StudentService, private dialog: MatDialog
     ) {}
