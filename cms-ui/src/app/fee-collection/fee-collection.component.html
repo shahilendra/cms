@@ -15,6 +15,7 @@
         <th mat-header-cell *matHeaderCellDef> January </th>
         <td mat-cell *matCellDef="let element"> 
             {{element.January}} 
+            <mat-icon *ngIf="element.January" (click)="receipt(element, 'January')">receipt</mat-icon>
             <mat-icon (click)="payment(element, 'January')" *ngIf="!element.January">edit</mat-icon>
         </td>
     </ng-container>
@@ -22,6 +23,7 @@
         <th mat-header-cell *matHeaderCellDef> February </th>
         <td mat-cell *matCellDef="let element"> 
             {{element.February}}
+            <mat-icon *ngIf="element.February" (click)="receipt(element, 'February')">receipt</mat-icon>
             <mat-icon (click)="payment(element, 'February')" *ngIf="!element.February">edit</mat-icon>
         </td>
     </ng-container>
@@ -29,6 +31,7 @@
         <th mat-header-cell *matHeaderCellDef> March </th>
         <td mat-cell *matCellDef="let element"> 
             {{element.March}}
+            <mat-icon *ngIf="element.March" (click)="receipt(element, 'March')">receipt</mat-icon>
             <mat-icon (click)="payment(element, 'March')" *ngIf="!element.March">edit</mat-icon>
         </td>
     </ng-container>
@@ -36,6 +39,7 @@
         <th mat-header-cell *matHeaderCellDef> April </th>
         <td mat-cell *matCellDef="let element">
             {{element.April}}
+            <mat-icon *ngIf="element.April" (click)="receipt(element, 'April')">receipt</mat-icon>
             <mat-icon (click)="payment(element, 'April')" *ngIf="!element.April">edit</mat-icon>
         </td>
     </ng-container>
@@ -43,6 +47,7 @@
         <th mat-header-cell *matHeaderCellDef> May </th>
         <td mat-cell *matCellDef="let element">
             {{element.May}}
+            <mat-icon *ngIf="element.May" (click)="receipt(element, 'May')">receipt</mat-icon>
             <mat-icon (click)="payment(element, 'May')" *ngIf="!element.May">edit</mat-icon>
         </td>
     </ng-container>
@@ -50,6 +55,7 @@
         <th mat-header-cell *matHeaderCellDef> June </th>
         <td mat-cell *matCellDef="let element"> 
             {{element.June}}
+            <mat-icon *ngIf="element.June" (click)="receipt(element, 'June')">receipt</mat-icon>
             <mat-icon (click)="payment(element, 'June')" *ngIf="!element.June">edit</mat-icon>
         </td>
     </ng-container>
@@ -57,6 +63,7 @@
         <th mat-header-cell *matHeaderCellDef> July </th>
         <td mat-cell *matCellDef="let element">
             {{element.July}}
+            <mat-icon *ngIf="element.July" (click)="receipt(element, 'July')">receipt</mat-icon>
             <mat-icon (click)="payment(element, 'July')" *ngIf="!element.July">edit</mat-icon>
         </td>
     </ng-container>
@@ -64,6 +71,7 @@
         <th mat-header-cell *matHeaderCellDef> August </th>
         <td mat-cell *matCellDef="let element">
             {{element.August}}
+            <mat-icon *ngIf="element.August" (click)="receipt(element, 'August')">receipt</mat-icon>
             <mat-icon (click)="payment(element, 'August')" *ngIf="!element.August">edit</mat-icon>
         </td>
     </ng-container>
@@ -71,6 +79,7 @@
         <th mat-header-cell *matHeaderCellDef> September </th>
         <td mat-cell *matCellDef="let element">
             {{element.September}}
+            <mat-icon *ngIf="element.September" (click)="receipt(element, 'September')">receipt</mat-icon>
             <mat-icon (click)="payment(element, 'September')" *ngIf="!element.September">edit</mat-icon>
         </td>
     </ng-container>
@@ -78,20 +87,23 @@
         <th mat-header-cell *matHeaderCellDef> October </th>
         <td mat-cell *matCellDef="let element">
             {{element.October}}
+            <mat-icon *ngIf="element.October" (click)="receipt(element, 'October')">receipt</mat-icon>
             <mat-icon (click)="payment(element, 'October')" *ngIf="!element.October">edit</mat-icon>
         </td>
     </ng-container>
     <ng-container matColumnDef="November">
         <th mat-header-cell *matHeaderCellDef> November </th>
         <td mat-cell *matCellDef="let element"> 
-            {{element.November}} 
+            {{element.November}}
+            <mat-icon *ngIf="element.November" (click)="receipt(element, 'November')">receipt</mat-icon>
             <mat-icon (click)="payment(element, 'November')" *ngIf="!element.November">edit</mat-icon>
         </td>
     </ng-container>
     <ng-container matColumnDef="December">
         <th mat-header-cell *matHeaderCellDef> December </th>
         <td mat-cell *matCellDef="let element">
-            {{element.December}} 
+            {{element.December}}
+            <mat-icon *ngIf="element.December" (click)="receipt(element, 'December')">receipt</mat-icon>
             <mat-icon (click)="payment(element, 'December')" *ngIf="!element.December">edit</mat-icon>
         </td>
     </ng-container>

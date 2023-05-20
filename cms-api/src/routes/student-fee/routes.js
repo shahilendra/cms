@@ -111,4 +111,27 @@ router.get('/fee/payments', function(req, res, next) {
   });
 });
 
+router.get('/fee/receipt', function(req, res, next) {
+  var obj = { 
+    orgId: req.organisationId,
+    sessionId: req.systemSetting?.sessionId,
+    month: req.query.month,
+    studentId: req.query.studentId
+  };
+  if(req.query.feeReceiptId !=='null') {
+    obj['feeReceiptId'] = req.query.feeReceiptId;
+  } else {
+    obj['feeReceiptId'] = null;
+  }
+  return sequelize.query(`EXEC GetStudentFeeReceipt :orgId, :sessionId, :month, :studentId, :feeReceiptId`,
+    { replacements: 
+      obj, type: sequelize.QueryTypes.SELECT }
+  )
+  .then((students) => {
+    return helpers.finalResponse(200 , students, res);
+  })
+  .catch((error) => {
+    return helpers.finalResponse(error.status , error, res);
+  });
+});
 module.exports = router;

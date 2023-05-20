@@ -6,13 +6,15 @@ import { FeeCollectionComponent } from './fee-collection.component';
 import { CoreModule } from '../core/core.module';
 import { FeeDueComponent } from './fee-due/fee-due.component';
 import { FeePaymentComponent } from './fee-payment/fee-payment.component';
+import { FeeReceiptComponent } from './fee-receipt/fee-receipt.component';
 
 
 @NgModule({
   declarations: [
     FeeCollectionComponent,
     FeeDueComponent,
-    FeePaymentComponent
+    FeePaymentComponent,
+    FeeReceiptComponent
   ],
   imports: [
     CommonModule,

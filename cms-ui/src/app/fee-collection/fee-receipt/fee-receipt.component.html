@@ -1,0 +1,60 @@
+<div class="header-container">
+    <div class="contact-dialog-title">
+      <div class="text-white"><h1>Student Fee Receipt </h1></div>
+        <button mat-icon-button (click)="onNoClick()">
+            <mat-icon>close</mat-icon>
+          </button>      
+    </div>
+  </div>
+  <div *ngFor="let item of entities">
+    <table>
+      <tr>
+        <td>
+          <span><b>Name: </b> {{item.name}} </span>
+        </td>
+        <td>
+          <span><b>joining Date: </b> {{item.joiningDate | date: 'dd/MM/yyyy' }} </span>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <span><b>Batch: </b> {{item.batch}} </span>
+        </td>
+        <td>
+          <span><b>class: </b> {{item.class  }} </span>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <span><b>Fee Amount: </b> {{item.feeAmount}} </span>
+        </td>
+        <td>
+          <span><b>Payment Amount: </b> {{item.paymentAmount  }} </span>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <span><b>discountAmount: </b> {{item.discountAmount}} </span>
+        </td>
+        <td>
+          <span><b>paymentDate: </b> {{item.paymentDate | date: 'dd/MM/yyyy'   }} </span>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <span><b>Receipt No: </b> {{item.receiptNo}} </span>
+        </td>
+        <td>
+          <span><b>paymentMode: </b> {{item.paymentMode }} </span>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <span><b>Month: </b> {{item.paymentMonth}} </span>
+        </td>
+        <td>
+          <span></span>
+        </td>
+      </tr>
+    </table>
+  </div>

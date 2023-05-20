@@ -4,6 +4,7 @@ import { StudentService } from '../student/student.service';
 import { MatDialog } from '@angular/material/dialog';
 import { StudentFeeComponent } from '../student/student-fee/student-fee.component';
 import { StudentFeeService } from '../student/student-fee/student-fee.service';
+import { FeeReceiptComponent } from './fee-receipt/fee-receipt.component';
 
 @Component({
   selector: 'app-fee-collection',
@@ -39,6 +40,16 @@ export class FeeCollectionComponent {
       data: {selectedRow: data, month: month},
       width: '800px',
       height: '800px'
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      this.getData();
+    });
+  }
+  receipt(data: any, month: string): void {
+    const dialogRef = this.dialog.open(FeeReceiptComponent, {
+      data: {selectedRow: data, month: month},
+      width: '600px',
+      height: '600px'
     });
     dialogRef.afterClosed().subscribe(result => {
       this.getData();
