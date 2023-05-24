@@ -17,7 +17,7 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MatSelectModule } from '@angular/material/select';
 import { MatTableModule } from '@angular/material/table';
 import { NgxMatTimepickerModule } from 'ngx-mat-timepicker';
-
+import { NgChartsModule } from 'ng2-charts';
 
 
 @NgModule({
@@ -43,6 +43,7 @@ import { NgxMatTimepickerModule } from 'ngx-mat-timepicker';
     MatDialogModule,
     NgxMatTimepickerModule,
     MatIconModule,
+    NgChartsModule
   ],
   providers: [
     {

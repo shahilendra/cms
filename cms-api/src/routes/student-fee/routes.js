@@ -134,4 +134,35 @@ router.get('/fee/receipt', function(req, res, next) {
     return helpers.finalResponse(error.status , error, res);
   });
 });
+
+router.get('/fee/monthly-dashboard', function(req, res, next) {
+  return sequelize.query(`EXEC GetStudentMonthlyFeeDashboard :orgId, :sessionId`,
+    { replacements: 
+      { 
+        orgId: req.organisationId,
+        sessionId: req.systemSetting?.sessionId
+      }, type: sequelize.QueryTypes.SELECT }
+  )
+  .then((monthlyFees) => {
+    return helpers.finalResponse(200 , monthlyFees, res);
+  })
+  .catch((error) => {
+    return helpers.finalResponse(error.status , error, res);
+  });
+});
+router.get('/fee/daily-dashboard', function(req, res, next) {
+  return sequelize.query(`EXEC GetStudentDailyFeeDashboard :orgId, :sessionId`,
+    { replacements: 
+      { 
+        orgId: req.organisationId,
+        sessionId: req.systemSetting?.sessionId
+      }, type: sequelize.QueryTypes.SELECT }
+  )
+  .then((dailyFees) => {
+    return helpers.finalResponse(200 , dailyFees, res);
+  })
+  .catch((error) => {
+    return helpers.finalResponse(error.status , error, res);
+  });
+});
 module.exports = router;

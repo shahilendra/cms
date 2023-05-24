@@ -31,6 +31,12 @@ export class StudentFeeService {
   getReceipt(data: any): Observable<any> {    
     return this.http.get(`${config.baseApiURL}v1/student-fees/fee/receipt?feeReceiptId=${data.feeReceiptId}&studentId=${data.studentId}&sessionId=${data.sessionId}&month=${data.month}`);
   }
+  getDailyFee(): Observable<any> {    
+    return this.http.get(`${config.baseApiURL}v1/student-fees/fee/daily-dashboard`);
+  }
+  getMonthlyFee(): Observable<any> {    
+    return this.http.get(`${config.baseApiURL}v1/student-fees/fee/monthly-dashboard`);
+  }
   formatDate(date: Date) {
     return [
       date.getFullYear(),      

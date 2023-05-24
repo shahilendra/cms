@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { map } from 'rxjs/operators';
 import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
+import { ChartOptions, ChartType } from 'chart.js';
+import { StudentFeeService } from '../student/student-fee/student-fee.service';
+//import { Label } from 'ng2-charts';
 
 @Component({
   selector: 'app-admin-dashboard',
@@ -8,26 +11,44 @@ import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
   styleUrls: ['./admin-dashboard.component.css']
 })
 export class AdminDashboardComponent {
-  /** Based on the screen size, switch from standard to one column per row */
-  cards = this.breakpointObserver.observe(Breakpoints.Handset).pipe(
-    map(({ matches }) => {
-      if (matches) {
-        return [
-          { title: 'Card 1', cols: 1, rows: 1 },
-          { title: 'Card 2', cols: 1, rows: 1 },
-          { title: 'Card 3', cols: 1, rows: 1 },
-          { title: 'Card 4', cols: 1, rows: 1 }
-        ];
+   barChartOptions: ChartOptions = {
+    responsive: true,
+  };
+  barChartLabels: any[] = [];
+  barChartLegend = true;
+  barChartPlugins = [];
+  barChartData: any[] = [
+    { data: [], label: 'Fee Collection' }
+  ];
+
+  barChartLabelsDaily: any[] = []; 
+  barChartDataDaily: any[] = [
+    { data: [], label: 'Fee Collection' }
+  ];
+  constructor(private studentFeeService: StudentFeeService
+    ) {}
+    ngOnInit() {
+      this.getData();
+    }
+  getData(){
+    this.studentFeeService.getDailyFee()
+    .subscribe((data)=>{
+      for(let index =0; index<data.length; index++) {
+        this.barChartDataDaily[0].data.push(data[index].Total);
+        this.barChartLabelsDaily.push(data[index].Date)
       }
-
-      return [
-        { title: 'Card 1', cols: 2, rows: 1 },
-        { title: 'Card 2', cols: 1, rows: 1 },
-        { title: 'Card 3', cols: 1, rows: 2 },
-        { title: 'Card 4', cols: 1, rows: 1 }
-      ];
-    })
-  );
-
-  constructor(private breakpointObserver: BreakpointObserver) {}
+    },
+    (error)=>{
+    });
+    this.studentFeeService.getMonthlyFee()
+    .subscribe((data)=>{
+      for(let index =0; index<data.length; index++) {
+        this.barChartData[0].data.push(data[index].Total);
+        this.barChartLabels.push(data[index].paymentMonth)
+      }
+      console.log(this.barChartLabels);
+    },
+    (error)=>{
+    });
+  }
 }
